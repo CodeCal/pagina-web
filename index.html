@@ -69,9 +69,8 @@
 
         <input type="hidden" name="_subject" value="Nueva Gestión de Compra Recibida">
 
-        <input type="hidden" name="_next" value="https://divinitas-blush.vercel.app/index.html">
-
         <button type="submit" class="btn-enviar">Enviar Datos de Compra</button>
+
     </form>
 </section>
 
@@ -88,17 +87,31 @@
     const formulario = document.querySelector('.formulario-contacto');
     const modal = document.getElementById('modal-agradecimiento');
 
-    formulario.addEventListener('submit', function(e) {
-        // Mostramos el modal inmediatamente al hacer clic
-        modal.classList.add('mostrar-modal');
-        
-        // El formulario seguirá su curso hacia Formspree 
-        // y te enviará el correo automáticamente.
+    formulario.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Evita que la página se recargue o se vaya a Formspree
+
+        const datos = new FormData(this);
+
+        // Enviamos los datos por "detrás" (AJAX)
+        const respuesta = await fetch(this.action, {
+            method: this.method,
+            body: datos,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (respuesta.ok) {
+            // Si el envío fue exitoso, mostramos TU ventana de gracias
+            modal.style.display = 'flex';
+            formulario.reset();
+        } else {
+            alert('Hubo un error al enviar. Por favor, intenta de nuevo.');
+        }
     });
 
     function cerrarModal() {
-        modal.classList.remove('mostrar-modal');
-        formulario.reset(); // Limpia los campos del formulario
+        modal.style.display = 'none';
     }
 </script>
 </body>
