@@ -6,9 +6,9 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
-    background-color: #f4f7f6;
-    color: #333;
+body, html {
+    width: 100%;
+    overflow-x: hidden; /* Evita que la página se mueva hacia los lados en móviles */
 }
 
 /* Navegación */
@@ -41,26 +41,36 @@ nav ul li a {
 
 /* Sección Principal (Hero) */
 .hero {
-    height: 70vh; /* Ocupa el 70% de la altura de la pantalla */
+    width: 100%;          /* Asegura que ocupe todo el ancho */
+    min-height: 70vh;     /* Usamos min-height en lugar de height para evitar recortes raros */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     
-    /* AQUÍ CARGAMOS TU IMAGEN */
-    /* El "linear-gradient" le pone una capa oscura suave para que el texto blanco se lea bien */
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                url('images/banner.jpg'); 
+    /* CAPA OSCURA + TU IMAGEN */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('images/tu-imagen.jpg'); 
     
-    background-size: cover;       /* Hace que la imagen cubra todo el espacio sin estirarse */
-    background-position: center;  /* Centra la imagen siempre */
-    background-attachment: scroll; /* Cambia a 'fixed' si quieres un efecto parallax elegante */
+    /* ESTAS TRES LÍNEAS SON LA CLAVE */
+    background-size: cover;      /* La imagen se estira para llenar TODO el contenedor */
+    background-position: center; /* Se centra para que lo más importante no se corte */
+    background-repeat: no-repeat;
+    
     color: white;
-    padding: 0 20px;
+    padding: 60px 20px;          /* Espacio interno para que el contenido no toque los bordes */
 }
 
-.hero-content {
-    max-width: 800px;
+/* Ajuste específico para que en el celular NO se vea recortado */
+@media (max-width: 600px) {
+    .hero {
+        min-height: 50vh;        /* Un poco más baja en móviles */
+        background-attachment: scroll; /* Importante: algunos móviles fallan con 'fixed' */
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
 }
 
 .hero h1 {
