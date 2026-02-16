@@ -41,16 +41,52 @@ nav ul li a {
 
 /* Sección Principal (Hero) */
 .hero {
-    height: 60vh;
+    height: 70vh; /* Ocupa el 70% de la altura de la pantalla */
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1200x600');
-    background-size: cover;
+    
+    /* AQUÍ CARGAMOS TU IMAGEN */
+    /* El "linear-gradient" le pone una capa oscura suave para que el texto blanco se lea bien */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('images/banner.jpg'); 
+    
+    background-size: cover;       /* Hace que la imagen cubra todo el espacio sin estirarse */
+    background-position: center;  /* Centra la imagen siempre */
+    background-attachment: scroll; /* Cambia a 'fixed' si quieres un efecto parallax elegante */
     color: white;
-    padding: 20px;
+    padding: 0 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para que resalte más */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 600px) {
+    .hero {
+        height: 50vh; /* En celular es mejor que sea un poco más baja */
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
 }
 
 .btn-principal {
