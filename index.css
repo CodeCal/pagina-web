@@ -1,0 +1,224 @@
+/* Configuración básica */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* Navegación */
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem 5%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Sección Principal (Hero) */
+.hero {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1200x600');
+    background-size: cover;
+    color: white;
+    padding: 20px;
+}
+
+.btn-principal {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Grid de Servicios */
+.grid-servicios {
+    display: flex;
+    flex-wrap: wrap; /* Esto permite que bajen de línea en móviles */
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 5%;
+}
+
+.tarjeta {
+    background: white;
+    padding: 20px;
+    flex: 1 1 300px; /* Crece, se encoge y su base es 300px */
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* --- MEDIA QUERIES (Para móviles) --- */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+    }
+    
+    nav ul {
+        margin-top: 15px;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+}
+/* Estilos del Formulario */
+.seccion-formulario {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.seccion-formulario h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.formulario-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.grupo-input label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.grupo-input input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.grupo-input input:focus {
+    border-color: #e74c3c;
+}
+
+.fila-doble {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.btn-enviar {
+    background: #27ae60;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.btn-enviar:hover {
+    background: #219150;
+}
+
+/* Ajuste móvil para la fila doble */
+@media (max-width: 480px) {
+    .fila-doble {
+        grid-template-columns: 1fr;
+    }
+}
+/* Estilos para el Modal */
+#modal-agradecimiento {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro transparente */
+    display: none; /* Oculto por defecto */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.contenido-modal {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    animation: aparecer 0.3s ease;
+}
+
+@keyframes aparecer {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.icono-exito {
+    font-size: 50px;
+    color: #27ae60;
+    margin-bottom: 15px;
+}
+
+.btn-cerrar {
+    margin-top: 20px;
+    padding: 10px 30px;
+    background: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Clase para mostrar el modal con JavaScript */
+.mostrar-modal {
+    display: flex !important;
+}
