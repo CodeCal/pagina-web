@@ -54,9 +54,8 @@ nav ul li a {
     
     /* ESTAS TRES LÍNEAS SON LA CLAVE */
     background-size: cover;      /* La imagen se estira para llenar TODO el contenedor */
-    background-position: center; /* Se centra para que lo más importante no se corte */
+    background-position: top center; /* Se centra para que lo más importante no se corte */
     background-repeat: no-repeat;
-    
     color: white;
     padding: 60px 20px;          /* Espacio interno para que el contenido no toque los bordes */
 }
