@@ -175,6 +175,9 @@ nav ul li a {
 }
 /* Estilos para el Modal */
 #modal-agradecimiento {
+    display: none; /* Asegúrate de que empiece oculto */
+    position: fixed;
+    /* ... el resto del código igual ... */
     position: fixed;
     top: 0;
     left: 0;
