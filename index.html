@@ -3,115 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Divinitas-Moda</title>
+    <title>DIVINITAS-MODA | Inicio</title>
     <link rel="stylesheet" href="index.css">
 </head>
-<body>
-
-    <header>
-        <nav>
+<body id="inicio"> <header class="header-principal">
+        <nav class="navegacion">
             <div class="logo">DIVINITAS-MODA</div>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Contacto</a></li>
+            <ul class="menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="hero">
-      <div class="hero-content">
-        <h1>Moda infantil</h1>
-        <button class="btn-principal">Ver Catalogo</button>
-      </div>
+    <main class="hero-banner">
+        <div class="hero-contenido">
+            <h1>Moda Infantil con Amor</h1>
+            <p>Descubre nuestra nueva colección pensada para los más pequeños.</p>
+            <a href="#catalogo" class="btn-principal">Ver Catálogo Completo</a>
+        </div>
     </main>
 
-    <section class="grid-servicios">
-        <div class="tarjeta"><h3>Pagos</h3><p>Unicamente por transferencias.</p></div>
-        <div class="tarjeta"><h3>Metodos de Pago</h3><p>MarcadoPago o Transferecnia a CBU/CVU</p></div>
+    <section id="catalogo" class="seccion-padding bg-light">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Nuestro Catálogo</h2>
+            <p class="subtitulo-seccion">Explora las últimas tendencias de esta temporada.</p>
+
+            <div class="catalogo-grid">
+                <div class="producto-card">
+                    <img src="https://picsum.photos/400/500?random=1" alt="Prenda infantil 1">
+                    <div class="info-producto">
+                        <h3>Vestido Floral</h3>
+                    </div>
+                </div>
+                <div class="producto-card">
+                    <img src="https://picsum.photos/400/500?random=2" alt="Prenda infantil 2">
+                    <div class="info-producto">
+                        <h3>Conjunto Urbano</h3>
+                    </div>
+                </div>
+                 <div class="producto-card">
+                    <img src="https://picsum.photos/400/500?random=3" alt="Prenda infantil 3">
+                    <div class="info-producto">
+                        <h3>Suéter Tejido</h3>
+                    </div>
+                </div>
+                 <div class="producto-card">
+                    <img src="https://picsum.photos/400/500?random=4" alt="Prenda infantil 4">
+                    <div class="info-producto">
+                        <h3>Pantalón Corderoy</h3>
+                    </div>
+                </div>
+            </div> </div>
     </section>
-<section class="seccion-formulario">
-    <h2>Confirmación de Compra</h2>
-    <p>Completa tus datos para procesar tu número de gestión.</p>
 
-    <form action="https://formspree.io/f/mdalzagg" method="POST" class="formulario-contacto">
-        
-        <div class="grupo-input">
-            <label for="nombre">Nombre Completo</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required>
+    <section id="nosotros" class="seccion-padding">
+        <div class="contenedor contenedor-estrecho">
+            <h2 class="titulo-seccion">Sobre Nosotros</h2>
+            <p>En DIVINITAS-MODA nos dedicamos a... (Aquí detallarás tu información más adelante). Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, voluptatum.</p>
         </div>
+    </section>
 
-        <div class="grupo-input">
-            <label for="apellido">Apellido</label>
-            <input type="text" id="apellido" name="apellido" placeholder="Ej: Rossi" required>
-        </div>
+    <footer>
+        <p>&copy; 2024 DIVINITAS-MODA. Todos los derechos reservados.</p>
+    </footer>
 
-        <div class="fila-doble">
-            <div class="grupo-input">
-                <label for="dni">DNI</label>
-                <input type="number" id="dni" name="dni" placeholder="Sin puntos" required>
-            </div>
-            <div class="grupo-input">
-                <label for="telefono">Teléfono</label>
-                <input type="tel" id="telefono" name="telefono" placeholder="Cod. área + número" required>
-            </div>
-        </div>
-
-        <div class="grupo-input">
-            <label for="gestion">Número de Gestión (Orden de Compra)</label>
-            <input type="text" id="gestion" name="numero_gestion" placeholder="Ej: #98765" required>
-        </div>
-
-        <div class="grupo-input">
-            <label for="email">Tu Correo Electrónico</label>
-            <input type="email" id="email" name="_replyto" placeholder="ejemplo@correo.com" required>
-        </div>
-
-        <input type="hidden" name="_subject" value="Nueva Gestión de Compra Recibida">
-
-        <button type="submit" class="btn-enviar">Enviar Datos de Compra</button>
-
-    </form>
-</section>
-
-<div id="modal-agradecimiento" class="modal-oculto">
-    <div class="contenido-modal">
-        <div class="icono-exito">✔</div>
-        <h2>¡Gracias por tu compra!</h2>
-        <p>Hemos recibido tus datos correctamente.</p>
-        <p>Tu número de gestión está siendo procesado. Te contactaremos a la brevedad.</p>
-        <button onclick="cerrarModal()" class="btn-cerrar">Entendido</button>
-    </div>
-</div>
-<script>
-    const formulario = document.querySelector('.formulario-contacto');
-    const modal = document.getElementById('modal-agradecimiento');
-
-    formulario.addEventListener('submit', async function(e) {
-        e.preventDefault(); // Evita que la página se recargue o se vaya a Formspree
-
-        const datos = new FormData(this);
-
-        // Enviamos los datos por "detrás" (AJAX)
-        const respuesta = await fetch(this.action, {
-            method: this.method,
-            body: datos,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-
-        if (respuesta.ok) {
-            // Si el envío fue exitoso, mostramos TU ventana de gracias
-            modal.style.display = 'flex';
-            formulario.reset();
-        } else {
-            alert('Hubo un error al enviar. Por favor, intenta de nuevo.');
-        }
-    });
-
-    function cerrarModal() {
-        modal.style.display = 'none';
-    }
-</script>
 </body>
 </html>

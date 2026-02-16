@@ -1,272 +1,227 @@
-/* Configuración básica */
+/* --- VARIABLES Y RESET --- */
+:root {
+    --color-primario: #2c3e50; /* Azul oscuro del header */
+    --color-acento: #e74c3c;   /* Naranja del botón */
+    --color-texto: #333;
+    --color-fondo-claro: #f9f9f9;
+    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body, html {
-    width: 100%;
-    overflow-x: hidden; /* Evita que la página se mueva hacia los lados en móviles */
+html {
+    scroll-behavior: smooth; /* Hace que al dar clic en el menú, el desplazamiento sea suave */
 }
 
-/* Navegación */
-header {
-    background: #2c3e50;
+body {
+    font-family: var(--fuente-principal);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/* --- UTILIDADES GENERALES --- */
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.contenedor-estrecho {
+    max-width: 800px; /* Para textos como "Nosotros" es mejor que no sea tan ancho */
+    text-align: center;
+}
+
+.seccion-padding {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: var(--color-fondo-claro);
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--color-primario);
+    margin-bottom: 10px;
+}
+
+.subtitulo-seccion {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #666;
+}
+
+/* --- HEADER Y NAVEGACIÓN --- */
+.header-principal {
+    background: var(--color-primario);
     color: white;
-    padding: 1rem 5%;
+    padding: 1rem 0;
+    position: sticky; /* Mantiene el menú fijo arriba al hacer scroll */
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-nav {
+.navegacion {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-nav ul {
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.menu {
     display: flex;
     list-style: none;
+    gap: 25px;
 }
 
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
+.menu li a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
-/* Sección Principal (Hero) */
-.hero {
-    width: 100%;          /* Asegura que ocupe todo el ancho */
-    min-height: 70vh;     /* Usamos min-height en lugar de height para evitar recortes raros */
+.menu li a:hover {
+    color: var(--color-acento);
+}
+
+/* --- HERO BANNER (La imagen de la madre) --- */
+.hero-banner {
+    height: 85vh; /* Ocupa el 85% de la altura de la pantalla */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: white;
     
-    /* CAPA OSCURA + TU IMAGEN */
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                url('images/banner.jpg'); 
+    /* IMPORTANTE: Asegúrate que la ruta a tu imagen sea correcta */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('images/banner-principal.jpg'); /* <--- REVISA ESTE NOMBRE */
     
-    /* ESTAS TRES LÍNEAS SON LA CLAVE */
-    background-size: cover;      /* La imagen se estira para llenar TODO el contenedor */
-    background-position: top center; /* Se centra para que lo más importante no se corte */
+    background-size: cover;
+    /* CLAVE: 'top center' asegura que no se corten las cabezas */
+    background-position: top center; 
     background-repeat: no-repeat;
-    color: white;
-    padding: 60px 20px;          /* Espacio interno para que el contenido no toque los bordes */
 }
 
-/* Ajuste específico para que en el celular NO se vea recortado */
-@media (max-width: 600px) {
-    .hero {
-        min-height: 50vh;        /* Un poco más baja en móviles */
-        background-attachment: scroll; /* Importante: algunos móviles fallan con 'fixed' */
-    }
-    
-    .hero h1 {
-        font-size: 1.8rem;
-    }
+.hero-contenido h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para que resalte más */
-}
-
-.hero p {
+.hero-contenido p {
     font-size: 1.2rem;
-    margin-bottom: 25px;
-}
-
-/* Ajuste para celulares */
-@media (max-width: 600px) {
-    .hero {
-        height: 50vh; /* En celular es mejor que sea un poco más baja */
-    }
-    
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-}
-
-.btn-principal {
-    margin-top: 20px;
-    padding: 10px 25px;
-    background: #e74c3c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-/* Grid de Servicios */
-.grid-servicios {
-    display: flex;
-    flex-wrap: wrap; /* Esto permite que bajen de línea en móviles */
-    justify-content: center;
-    gap: 20px;
-    padding: 40px 5%;
-}
-
-.tarjeta {
-    background: white;
-    padding: 20px;
-    flex: 1 1 300px; /* Crece, se encoge y su base es 300px */
-    max-width: 400px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    text-align: center;
-}
-
-/* --- MEDIA QUERIES (Para móviles) --- */
-@media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-    }
-    
-    nav ul {
-        margin-top: 15px;
-    }
-
-    .hero h1 {
-        font-size: 1.5rem;
-    }
-}
-/* Estilos del Formulario */
-.seccion-formulario {
+    margin-bottom: 30px;
     max-width: 600px;
-    margin: 50px auto;
-    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Botón principal */
+.btn-principal {
+    display: inline-block;
+    padding: 12px 35px;
+    background: var(--color-acento);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-principal:hover {
+    background: #c0392b; /* Un rojo un poco más oscuro */
+    transform: translateY(-3px); /* Efecto de elevación al pasar el mouse */
+}
+
+/* --- SECCIÓN CATÁLOGO (CSS Grid) --- */
+.catalogo-grid {
+    display: grid;
+    /* Esta línea es MÁGICA para la responsividad: 
+       Crea columnas automáticas que nunca son más pequeñas de 250px */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.producto-card {
     background: white;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden; /* Para que la imagen no se salga de las esquinas redondeadas */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
 }
 
-.seccion-formulario h2 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 20px;
+.producto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.formulario-contacto {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.grupo-input {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.grupo-input label {
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #555;
-}
-
-.grupo-input input {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 1rem;
-    outline: none;
-    transition: border 0.3s;
-}
-
-.grupo-input input:focus {
-    border-color: #e74c3c;
-}
-
-.fila-doble {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.btn-enviar {
-    background: #27ae60;
-    color: white;
-    padding: 15px;
-    border: none;
-    border-radius: 6px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 10px;
-}
-
-.btn-enviar:hover {
-    background: #219150;
-}
-
-/* Ajuste móvil para la fila doble */
-@media (max-width: 480px) {
-    .fila-doble {
-        grid-template-columns: 1fr;
-    }
-}
-/* Estilos para el Modal */
-#modal-agradecimiento {
-    display: none; /* Asegúrate de que empiece oculto */
-    position: fixed;
-    /* ... el resto del código igual ... */
-    position: fixed;
-    top: 0;
-    left: 0;
+.producto-card img {
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro transparente */
-    display: none; /* Oculto por defecto */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    height: 300px; /* Altura fija para que todas las fotos se vean uniformes */
+    object-fit: cover; /* Recorta la imagen si no encaja exactamente en el área */
 }
 
-.contenido-modal {
-    background: white;
-    padding: 40px;
-    border-radius: 15px;
+.info-producto {
+    padding: 20px;
     text-align: center;
-    max-width: 400px;
-    width: 90%;
-    animation: aparecer 0.3s ease;
 }
 
-@keyframes aparecer {
-    from { transform: scale(0.7); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+.info-producto h3 {
+    font-size: 1.2rem;
+    color: var(--color-primario);
 }
 
-.icono-exito {
-    font-size: 50px;
-    color: #27ae60;
-    margin-bottom: 15px;
-}
-
-.btn-cerrar {
-    margin-top: 20px;
-    padding: 10px 30px;
-    background: #2c3e50;
+/* --- FOOTER --- */
+footer {
+    background: var(--color-primario);
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
 }
 
-/* Clase para mostrar el modal con JavaScript */
-.mostrar-modal {
-    display: flex !important;
+/* --- MEDIA QUERIES (Ajustes para Celulares) --- */
+@media (max-width: 768px) {
+    /* Menú: en celular lo simplificamos (idealmente sería un menú hamburguesa, 
+       pero para empezar esto funciona bien) */
+    .navegacion {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .menu {
+        gap: 15px;
+    }
+
+    /* Ajustes de texto del banner en celular */
+    .hero-banner {
+        height: 70vh;
+    }
+    .hero-contenido h1 {
+        font-size: 2.2rem;
+    }
+    .hero-contenido p {
+        font-size: 1rem;
+    }
+
+    /* Ajuste de títulos de sección */
+    .titulo-seccion {
+        font-size: 2rem;
+    }
 }
