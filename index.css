@@ -110,7 +110,7 @@ body {
     
     /* IMPORTANTE: Asegúrate que la ruta a tu imagen sea correcta */
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                url('images/banner-principal.jpg'); /* <--- REVISA ESTE NOMBRE */
+                url('images/banner.jpg'); /* <--- REVISA ESTE NOMBRE */
     
     background-size: cover;
     /* CLAVE: 'top center' asegura que no se corten las cabezas */
