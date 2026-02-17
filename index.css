@@ -114,7 +114,7 @@ body {
     
     background-size: cover;
     /* CLAVE: 'top center' asegura que no se corten las cabezas */
-    background-position: top center; 
+    background-position: center 35%; 
     background-repeat: no-repeat;
 }
 
