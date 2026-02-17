@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | DIVINITAS-MODA</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="header-principal">
+        <nav class="navegacion">
+            <div class="logo">DIVINITAS-MODA</div>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li class="cart-icon"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contenedor catalogo-layout">
+        <aside class="sidebar-filtros">
+            <div class="bloque-sidebar">
+                <h3>Buscar</h3>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="¿Qué buscas hoy?">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+
+            <div class="bloque-sidebar">
+                <h3>Categorías</h3>
+                <ul class="lista-categorias">
+                    <li><a href="#" class="filter-btn" data-cat="todo">Todo</a></li>
+                    <li><a href="#" class="filter-btn" data-cat="medias">Medias</a></li>
+                    <li><a href="#" class="filter-btn" data-cat="pantalones">Pantalones</a></li>
+                    <li><a href="#" class="filter-btn" data-cat="camperas">Camperas</a></li>
+                    <li><a href="#" class="filter-btn" data-cat="vestidos">Vestidos</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="productos-catalogo">
+            <h2 class="titulo-pagina">Nuestras Prendas</h2>
+            
+            <div class="catalogo-grid" id="product-grid">
+                <div class="producto-card" data-nombre="pack medias algodon" data-categoria="medias">
+                    <img src="https://picsum.photos/400/500?random=11" alt="Medias">
+                    <div class="info-producto">
+                        <h3>Pack Medias Algodón</h3>
+                        <p class="precio">$2.500</p>
+                        <button class="btn-add-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <div class="producto-card" data-nombre="jean clasico azul" data-categoria="pantalones">
+                    <img src="https://picsum.photos/400/500?random=12" alt="Pantalones">
+                    <div class="info-producto">
+                        <h3>Jean Clásico Azul</h3>
+                        <p class="precio">$15.000</p>
+                        <button class="btn-add-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <div class="producto-card" data-nombre="campera de abrigo" data-categoria="camperas">
+                    <img src="https://picsum.photos/400/500?random=13" alt="Camperas">
+                    <div class="info-producto">
+                        <h3>Campera de Abrigo</h3>
+                        <p class="precio">$25.000</p>
+                        <button class="btn-add-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <div class="producto-card" data-nombre="vestido de fiesta rosa" data-categoria="vestidos">
+                    <img src="https://picsum.photos/400/500?random=14" alt="Vestidos">
+                    <div class="info-producto">
+                        <h3>Vestido de Fiesta Rosa</h3>
+                        <p class="precio">$18.000</p>
+                        <button class="btn-add-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // --- BUSCADOR ---
+        document.getElementById('search-input').addEventListener('keyup', (e) => {
+            const term = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.producto-card');
+            
+            items.forEach(item => {
+                const nombre = item.getAttribute('data-nombre');
+                if(nombre.includes(term)) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        });
+
+        // --- CARRITO (Contador simple) ---
+        let count = 0;
+        const countSpan = document.getElementById('cart-count');
+        const buttons = document.querySelectorAll('.btn-add-cart');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                count++;
+                countSpan.innerText = count;
+                // Feedback visual
+                btn.innerText = "¡Agregado!";
+                btn.style.background = "#27ae60";
+                setTimeout(() => {
+                    btn.innerText = "Añadir al carrito";
+                    btn.style.background = "#2c3e50";
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>

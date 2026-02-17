@@ -11,7 +11,7 @@
             <div class="logo">DIVINITAS-MODA</div>
             <ul class="menu">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
             </ul>
         </nav>
@@ -21,13 +21,13 @@
         <div class="hero-contenido">
             <h1>Moda Infantil.</h1>
             <p>Descubre nuestra nueva colección pensada para los más pequeños.</p>
-            <a href="#catalogo" class="btn-principal">Ver Catálogo Completo</a>
+            <a href="catalogo.html" class="btn-principal">Ver Catálogo Completo</a>
         </div>
     </main>
 
     <section id="catalogo" class="seccion-padding bg-light">
         <div class="contenedor">
-            <h2 class="titulo-seccion">Nuestro Catálogo</h2>
+            <h2 class="titulo-seccion">TENDENCIAS</h2>
             <p class="subtitulo-seccion">Explora las últimas tendencias de esta temporada.</p>
 
             <div class="catalogo-grid">
@@ -64,7 +64,20 @@
             <p>En DIVINITAS-MODA nos dedicamos a... (Aquí detallarás tu información más adelante)</p>
         </div>
     </section>
-
+    <div id="carrito-flotante" class="carrito-resumen">
+        <div class="carrito-header">
+        <h4>Tu Pedido</h4>
+        <button onclick="toggleCarrito()" class="btn-cerrar-cart">X</button>
+         </div>
+        <ul id="lista-carrito">
+        </ul>
+        <div class="carrito-total">
+        <strong>Total: $<span id="precio-total">0</span></strong>
+        </div>
+        <button onclick="enviarWhatsApp()" class="btn-whatsapp">
+        <i class="fab fa-whatsapp"></i> Finalizar por WhatsApp
+        </button>
+    </div>
     <footer>
         <p>&copy; 2026 DIVINITAS-MODA. Todos los derechos reservados.</p>
     </footer>
